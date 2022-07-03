@@ -187,10 +187,63 @@ const nama = "Salwa";
   3. baca useEffect
   4. kembali ke return
 
+* **axios** :
+
+  - untuk menampilkan data API.
+  - axios merupakan pengganti fetch.
+  - agar dapat digunakan, import axios nya terlebih dahulu dari react.
+
+    ```js
+    import { useEffect, useState } from "react";
+    import axios from "axios";
+
+    function App() {
+      const [dataGithub,setDataGithub] = useState({});
+
+      // useeffect call api
+      let url = "https://api.github.com/users/SalwaNurulAisha";
+
+      useEffect(() => {
+        async function getAPI() {
+          const result = await axios.get(url);
+          console.log(result);
+          setDataGithub(result.data);
+        }
+
+        getAPI();
+      }, []);
+
+      console.log(dataGithub);
+
+      return (
+        <div className="App">
+          <h1>Use Effect</h1>
+
+          {/* useEffect data github  */}
+          <h1>Nama github: {dataGithub.name}</h1>
+          <h1>Username: {dataGithub.login}</h1>
+          <h1>id: {dataGithub.id}</h1>
+      );
+    }
+
+    export default App;
+    ```
+
 ### REACT ROUTER DOM
 
-1. Browser route
-2. Routes
-3. Route (single closing </> ) => path & element
-   **tempat untuk mendaftar**
-4. Link : berpindah dari satu halaman ke halaman lain
+- Cara Penggunaan
+  1. install react router
+     ```js
+     npm install react-router-dom@6
+     ```
+  2. import react-router dari react
+     ```js
+     import { BrowserRouter, Routes, Route } from "react-router-dom";
+     ```
+  3. Flow code-nya :
+     a. BrowserRouter
+     b. Routes.
+     c. Route (single closing </> ) => path & element
+
+* **tempat untuk mendaftar**
+  Link : berpindah dari satu halaman ke halaman lain
